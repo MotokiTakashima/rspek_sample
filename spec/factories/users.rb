@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :user do
-    name { "MyString" }
-    age { 1 }
-    email { "MyString" }
+    name { "satou" }
+    age { 32 }
+    email { "satou@example.com" }
   end
 end
