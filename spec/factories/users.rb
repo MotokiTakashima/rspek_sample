@@ -2,7 +2,6 @@ FactoryBot.define do
   factory :user do
     name { Faker::Name.name }
     age { rand(121) }
-    email { Faker::Internet.email }
+    email { Faker::Internet.unique.email }
   end
-  sequence(:email) { |n| "#{n}_#{Faker::Internet.email}" }
 end
