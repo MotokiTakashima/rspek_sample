@@ -4,4 +4,5 @@ FactoryBot.define do
     age { rand(121) }
     email { Faker::Internet.email }
   end
+  sequence(:email) { |n| "#{n}_#{Faker::Internet.email}" }
 end
