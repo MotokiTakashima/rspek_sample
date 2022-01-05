@@ -7,5 +7,12 @@ RSpec.describe "Users", type: :request do
       get(users_path)
       expect(response).to have_http_status(:ok)
     end
+    it "name が表示されている" do
+      user1 = create(:user)
+      user2 = create(:user)
+      user3 = create(:user)
+      get(users_path)
+      expect(response.body).to include(user1.name, user2.name, user3.name)
+    end
   end
 end
