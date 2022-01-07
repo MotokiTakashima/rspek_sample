@@ -18,20 +18,37 @@ RSpec.describe "Users", type: :request do
   end
 
   describe "GET #show" do
+    subject { get(user_path(user_id)) }
     context "ユーザーが存在するとき" do
+      let(:user) { create(:user) }
+      let(:user_id) { user.id }
+
       it "リクエストが成功する" do
-        user = create(:user)
-        get(user_path(user.id))
+        subject 
         expect(response).to have_http_status(:ok)
       end
 
       it "name が表示されている" do
+        subject
+        expect(response.body).to include user.name
       end
 
       it "age が表示されている" do
+        subject
+        expect(response.body).to include user.age.to_s
       end
 
       it "email が表示されている" do
+        subject
+        expect(response.body).to include user.email
+      end
+    end
+
+    context ":idに対応するユーザーが存在しないとき" do
+      let(:user_id) { 1 }
+
+      it "エラーが発生する" do
+        expect { subject }.to raise_error ActiveRecord::RecordNotFound
       end
     end
   end
