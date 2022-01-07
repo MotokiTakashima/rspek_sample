@@ -16,4 +16,23 @@ RSpec.describe "Users", type: :request do
       end
     end
   end
+
+  describe "GET #show" do
+    context "ユーザーが存在するとき" do
+      it "リクエストが成功する" do
+        user = create(:user)
+        get(user_path(user.id))
+        expect(response).to have_http_status(:ok)
+      end
+
+      it "name が表示されている" do
+      end
+
+      it "age が表示されている" do
+      end
+
+      it "email が表示されている" do
+      end
+    end
+  end
 end
