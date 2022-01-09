@@ -126,5 +126,5 @@ RSpec.describe "Users", type: :request do
         expect(response.body).to include user.email
       end
     end
-
+  end
 end
