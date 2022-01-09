@@ -60,4 +60,30 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(:ok)
     end
   end
+
+  describe "POST #create" do
+    context "パラメータが正常なとき" do
+      it "リクエストが成功する" do
+        post(users_path, params: { user: attributes_for(:user) })
+        expect(response).to have_http_status(302)
+      end
+
+      it "ユーザーが保存される" do
+      end
+
+      it "詳細ページにリダイレクトされる" do
+      end
+    end
+
+    context "パラメータが異常なとき" do
+      it "リクエストが成功する" do
+      end
+
+      it "ユーザーが保存されない" do
+      end
+
+      it "新規投稿ページがレンダリングされる" do
+      end
+    end
+  end
 end
